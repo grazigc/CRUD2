@@ -4,38 +4,45 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class DisciplinaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // apí fake de produtos
-        $products = [
+        $disciplinas = [
             [    
                 'id'           => 1,
-                'name'          => 'Camisa rock',
-                'valor'         => 33.30, 
-                'categoria'     => 'Vesturário',
-                'marca'         => 'Nike', 
-                'qtd_estoque'   => 200
+                'nome'         => 'Quimica',
+                'professor'    => 'Nilson', 
+                'escola'       => 'IFRO',
+                'qtd_aluno'    => '200' 
             ],
+
             [    
-                'id'            => 2,
-                'name'          => 'Bermuda',
-                'valor'         => 33.30, 
-                'categoria'     => 'Vesturário',
-                'marca'         => 'Hello', 
-                'qtd_estoque'   => 100
+                'id'           => 2,
+                'nome'         => 'Matematica',
+                'professor'    => 'Ozemar', 
+                'escola'       => 'IFRO',
+                'qtd_aluno'    => '180' 
+        
+            ],
+
+            [    
+                'id'           => 3,
+                'nome'         => 'Filosofia',
+                'professor'    => 'Mateus', 
+                'escola'       => 'IFRO',
+                'qtd_aluno'    => '300' 
+        
             ]
+            
         ];
 
-        // array da lista dos produtos
+        $disciplinaList = array_column($disciplinas, 'nome');
 
-        $productList = array_column($products, 'name');
-
-        return view('ListaProdutos', compact('products', 'productList'));
+        return view ('ListaDisciplinas', compact('disciplinas', 'disciplinaList'));
     }
 
     /**
